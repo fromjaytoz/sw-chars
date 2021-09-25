@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { Button, Layout } from "antd";
 import styled from "styled-components";
+import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
 
 const { Header, Footer, Content } = Layout;
@@ -13,7 +14,7 @@ const App: FC = () => (
   <div className="App">
     <Layout>
       <HeaderView>
-        Header <Button>Test</Button>
+        <Navbar />
       </HeaderView>
       <Content>Content</Content>
       <Footer>Footer</Footer>
