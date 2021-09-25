@@ -5,7 +5,10 @@ import "./App.css";
 
 const { Header, Footer, Content } = Layout;
 
-const HeaderView = styled(Header)``;
+const HeaderView = styled(Header)`
+  display: flex;
+  flex-direction: column;
+`;
 const App: FC = () => (
   <div className="App">
     <Layout>
