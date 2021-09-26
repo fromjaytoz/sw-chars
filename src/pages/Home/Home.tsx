@@ -4,6 +4,7 @@ import { List, Card, Row } from "antd";
 import styled from "styled-components";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Typography } from "antd";
+import { useQuery } from "react-query";
 
 const { Title } = Typography;
 
@@ -216,6 +217,7 @@ const CardList = styled(List)`
 `;
 
 const Home = () => {
+  const { isLoading, error, data } = useQuery("fetchChars");
   const [cardData, setCardData] = useState({
     data: data,
     loading: false,
