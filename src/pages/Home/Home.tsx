@@ -22,10 +22,17 @@ interface CardData {
   hasMore: boolean;
 }
 
-interface FetchedData {}
+interface FetchedData {
+  count: number;
+  next?: string;
+  previous?: string;
+  results: CharData[];
+}
 
 const Home: React.FC = () => {
-  const [next, setNext] = useState(`https://swapi.dev/api/people/?page=1`);
+  const [next, setNext] = useState<string | undefined>(
+    `https://swapi.dev/api/people/?page=1`
+  );
   const [cardData, setCardData] = useState<CardData>({
     data: [],
     loading: false,
@@ -43,7 +50,7 @@ const Home: React.FC = () => {
       });
       return;
     }
-    const { data } = await axios.get<any>(next);
+    const { data } = await axios.get<FetchedData>(next);
     setNext(data?.next);
     if (cardData?.data?.length === 0) {
       await setCardData((prev) => {
@@ -53,7 +60,7 @@ const Home: React.FC = () => {
       setCardData((prev: any) => {
         return { ...prev, data: prev.data.concat(data.results) };
       });
-      console.log(cardData);
+      console.log(data);
     }
   };
   return (

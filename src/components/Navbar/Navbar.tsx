@@ -5,7 +5,7 @@ const { Title } = Typography;
 
 const NavView = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
 `;
@@ -13,7 +13,7 @@ const NavView = styled.div`
 const Navbar: React.FC = () => {
   return (
     <NavView data-testid="navbar">
-      <Title style={{ color: "#ebdc1e", margin: 2 }}>
+      <Title style={{ color: "#ebdc1e", margin: 48 }}>
         SWAPI Character Data w/ Infinite Scroll
       </Title>
     </NavView>
