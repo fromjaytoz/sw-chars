@@ -43,12 +43,12 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     !next && setNext("https://swapi.dev/api/people/?page=1");
-  }, [next]);
+  }, [next]); //remove this is to end scroll cycle
 
   const fetchData = async () => {
     // if (!next) {
     //   setCardData((prev) => {
-    //     return { ...prev, hasMore: false };
+    //     return { ...prev, hasMore: false };   //uncomment this is to end scroll cycle
     //   });
     //   return;
     // }
@@ -79,7 +79,7 @@ const Home: React.FC = () => {
         <CardTitle level={3}>
           SWAPI's Character Data goes as far as here, stranger. Safe travels,
           and may the Force be with you.
-        </CardTitle>
+        </CardTitle> //This does not display unless scroll cycle is ended. See above comments
       }
     >
       <ListView data-testid="home-page">
