@@ -5,6 +5,7 @@ import styled from "styled-components";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Typography } from "antd";
 import { useQuery } from "react-query";
+import axios from "axios";
 
 const { Title } = Typography;
 
@@ -217,26 +218,44 @@ const CardList = styled(List)`
 `;
 
 const Home = () => {
-  const { isLoading, error, data } = useQuery("fetchChars");
+  const [next, setNext] = useState(`https://swapi.dev/api/people/?page=1`);
   const [cardData, setCardData] = useState({
     data: data,
     loading: false,
     hasMore: true,
   });
 
-  const fetchData = () => {
-    //for data fetching
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-    setCardData((prev) => {
-      return { ...prev, data: prev.data.concat(data) };
-    });
+  const fetchData = async () => {
+    if (!next) {
+      setCardData((prev) => {
+        return { ...prev, hasMore: false };
+      });
+      return;
+    }
+    const { data } = await axios.get(next);
+    setNext(data?.next);
+    if (cardData?.data?.length === 0) {
+      await setCardData((prev) => {
+        return { ...prev, data: data.results };
+      });
+    } else {
+      setCardData((prev) => {
+        return { ...prev, data: prev.data.concat(data.results) };
+      });
+      console.log(data);
+    }
   };
   return (
     <InfiniteScroll
-      dataLength={cardData.data.length}
+      dataLength={cardData?.data?.length}
       loader={<h1>Test</h1>}
       next={fetchData}
-      hasMore={true}
+      hasMore={cardData.hasMore}
+      endMessage={<h1 style={{ color: "red" }}>oasjpodasjpdosj</h1>}
     >
       <ListView data-testid="home-page">
         <CardList
