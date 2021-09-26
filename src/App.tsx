@@ -7,7 +7,7 @@ import Home from "./pages/Home/Home";
 //components
 import Navbar from "./components/Navbar/Navbar";
 
-const { Header, Footer, Content } = Layout;
+const { Header, Content } = Layout;
 
 const HeaderView = styled(Header)`
   display: flex;
@@ -33,7 +33,6 @@ const App: FC = () => (
       <ContentView>
         <Home />
       </ContentView>
-      <Footer>Footer</Footer>
     </Layout>
   </div>
 );

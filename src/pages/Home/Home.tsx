@@ -1,43 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Form from "../../components/Form/Form";
-import { List, Card, Row } from "antd";
-import styled from "styled-components";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Typography } from "antd";
-import { useQuery } from "react-query";
+import { Spin } from "antd";
 import axios from "axios";
 
-const { Title } = Typography;
+//Styling
+import { ListView, CardList, CardTitle, ImageCard } from "./styled/Home-styled";
 
-const ListView = styled.div`
-  background: black;
-`;
-
-const Image = styled.img`
-  object-fit: contain;
-  width: 100%;
-`;
-
-const ImageCard = styled(Card)`
-  width: 100%;
-  background: black;
-  border: solid black 1px;
-`;
-
-const CardTitle = styled(Title)`
-  &.ant-typography {
-    color: #ebdc1e;
-  }
-`;
-
-const CardList = styled(List)`
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
-
+//Interfaces
 interface CharData {
   name: string;
   hair_color: string;
@@ -52,6 +21,8 @@ interface CardData {
   loading: boolean;
   hasMore: boolean;
 }
+
+interface FetchedData {}
 
 const Home: React.FC = () => {
   const [next, setNext] = useState(`https://swapi.dev/api/people/?page=1`);
@@ -72,7 +43,7 @@ const Home: React.FC = () => {
       });
       return;
     }
-    const { data } = await axios.get(next);
+    const { data } = await axios.get<any>(next);
     setNext(data?.next);
     if (cardData?.data?.length === 0) {
       await setCardData((prev) => {
@@ -88,10 +59,20 @@ const Home: React.FC = () => {
   return (
     <InfiniteScroll
       dataLength={cardData?.data?.length}
-      loader={<h1>Test</h1>}
+      loader={
+        <>
+          <CardTitle>Loading Server Data...</CardTitle>
+          <Spin size="large" />
+        </>
+      }
       next={fetchData}
       hasMore={cardData.hasMore}
-      endMessage={<h1 style={{ color: "red" }}>oasjpodasjpdosj</h1>}
+      endMessage={
+        <CardTitle level={3}>
+          SWAPI's Character Data goes as far as here, stranger. Safe travels,
+          and may the Force be with you.
+        </CardTitle>
+      }
     >
       <ListView data-testid="home-page">
         <CardList

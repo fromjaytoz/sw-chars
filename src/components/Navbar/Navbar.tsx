@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Typography } from "antd";
+import { Typography } from "antd";
 import styled from "styled-components";
 const { Title } = Typography;
 
@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
   return (
     <NavView data-testid="navbar">
       <Title style={{ color: "#ebdc1e", margin: 2 }}>
-        SWAPI Characters, Infinite Scroll
+        SWAPI Character Data w/ Infinite Scroll
       </Title>
     </NavView>
   );
