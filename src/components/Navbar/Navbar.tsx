@@ -13,8 +13,9 @@ const NavView = styled.div`
 const Navbar = () => {
   return (
     <NavView data-testid="navbar">
-      <h1>Test</h1>
-      <Button data-testid=" button">Test</Button>
+      <Title style={{ color: "white", margin: 2, whiteSpace: "nowrap" }}>
+        Star Wars Characters
+      </Title>
     </NavView>
   );
 };

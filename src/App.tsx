@@ -12,10 +12,11 @@ const { Header, Footer, Content } = Layout;
 const HeaderView = styled(Header)`
   display: flex;
   flex-direction: row;
+  background: black;
 `;
 
 const ContentView = styled(Content)`
-  background: red;
+  background: black;
   padding: 20px;
   display: flex;
   flex-direction: row;
