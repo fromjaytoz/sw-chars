@@ -10,7 +10,7 @@ const NavView = styled.div`
   width: 100%;
 `;
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   return (
     <NavView data-testid="navbar">
       <Title style={{ color: "#ebdc1e", margin: 2 }}>

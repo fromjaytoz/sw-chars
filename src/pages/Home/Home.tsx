@@ -38,16 +38,24 @@ const CardList = styled(List)`
   flex-direction: column;
 `;
 
-const darthJarJar = {
-  name: "Darth Jar Jar",
-  gender: "Meesa male!",
-  height: "Meesa jump high",
-};
+interface CharData {
+  name: string;
+  hair_color: string;
+  skin_color: string;
+  gender: string;
+  height: string;
+  eye_color: string;
+  birth_year: string;
+}
+interface CardData {
+  data: CharData[];
+  loading: boolean;
+  hasMore: boolean;
+}
 
-const Home = () => {
+const Home: React.FC = () => {
   const [next, setNext] = useState(`https://swapi.dev/api/people/?page=1`);
-  const [jarJarBinks, setJarJarBinks] = useState(darthJarJar);
-  const [cardData, setCardData] = useState({
+  const [cardData, setCardData] = useState<CardData>({
     data: [],
     loading: false,
     hasMore: true,
@@ -71,7 +79,7 @@ const Home = () => {
         return { ...prev, data: data.results };
       });
     } else {
-      setCardData((prev) => {
+      setCardData((prev: any) => {
         return { ...prev, data: prev.data.concat(data.results) };
       });
       console.log(cardData);
