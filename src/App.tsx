@@ -18,6 +18,7 @@ const ContentView = styled(Content)`
   background: red;
   padding: 20px;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 `;
