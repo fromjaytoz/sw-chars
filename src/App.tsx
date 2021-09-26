@@ -1,9 +1,11 @@
 import React, { FC } from "react";
-import { Layout } from "antd";
-
-import styled from "styled-components";
-import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
+import { Layout } from "antd";
+import styled from "styled-components";
+
+//components
+import Navbar from "./components/Navbar/Navbar";
+import Form from "./components/Form/Form";
 
 const { Header, Footer, Content } = Layout;
 
@@ -17,7 +19,9 @@ const App: FC = () => (
       <HeaderView>
         <Navbar />
       </HeaderView>
-      <Content></Content>
+      <Content>
+        <Form />
+      </Content>
       <Footer>Footer</Footer>
     </Layout>
   </div>
