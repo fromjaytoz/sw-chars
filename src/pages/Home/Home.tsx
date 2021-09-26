@@ -2,6 +2,7 @@ import React from "react";
 import Form from "../../components/Form/Form";
 import { List, Card, Row } from "antd";
 import styled from "styled-components";
+import InfiniteScroller from "react-infinite-scroller";
 
 const { Item } = List;
 
