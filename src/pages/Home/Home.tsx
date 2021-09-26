@@ -9,193 +9,6 @@ import axios from "axios";
 
 const { Title } = Typography;
 
-const data = [
-  {
-    title: "Title 1",
-  },
-  {
-    title: "Title 2",
-  },
-  {
-    title: "Title 3",
-  },
-  {
-    title: "Title 4",
-  },
-  {
-    title: "Title 5",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 1",
-  },
-  {
-    title: "Title 2",
-  },
-  {
-    title: "Title 3",
-  },
-  {
-    title: "Title 4",
-  },
-  {
-    title: "Title 5",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 1",
-  },
-  {
-    title: "Title 2",
-  },
-  {
-    title: "Title 3",
-  },
-  {
-    title: "Title 4",
-  },
-  {
-    title: "Title 5",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 1",
-  },
-  {
-    title: "Title 2",
-  },
-  {
-    title: "Title 3",
-  },
-  {
-    title: "Title 4",
-  },
-  {
-    title: "Title 5",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-  {
-    title: "Title 6",
-  },
-];
-
 const ListView = styled.div`
   background: grey;
 `;
@@ -220,7 +33,7 @@ const CardList = styled(List)`
 const Home = () => {
   const [next, setNext] = useState(`https://swapi.dev/api/people/?page=1`);
   const [cardData, setCardData] = useState({
-    data: data,
+    data: [],
     loading: false,
     hasMore: true,
   });
@@ -246,7 +59,7 @@ const Home = () => {
       setCardData((prev) => {
         return { ...prev, data: prev.data.concat(data.results) };
       });
-      console.log(data);
+      console.log(cardData);
     }
   };
   return (
@@ -263,17 +76,14 @@ const Home = () => {
           dataSource={cardData.data}
           itemLayout="vertical"
           size="small"
-          renderItem={(card) => (
-            <ImageCard title={`Name:`}>
-              <Title level={5}>Height: </Title>
-              <Title level={5}>Hair Color: Test</Title>
-              <Title level={5}>Skin Color: Test</Title>
-              <Title level={5}>Eye color: Test</Title>
-              <Title level={5}>Birth Year: Test</Title>
-              <Title level={5}>Name: Test</Title>
-              <Title level={5}>Gender: Test</Title>
-              <Title level={5}>Homeworld: Test</Title>
-              <Title level={5}>Films: Test</Title>
+          renderItem={(card: any) => (
+            <ImageCard title={`Name: ${card.name}`}>
+              <Title level={5}>Gender: {card.gender}</Title>
+              <Title level={5}>Height: {card.height} </Title>
+              <Title level={5}>Hair Color: {card.hair_color}</Title>
+              <Title level={5}>Skin Color: {card.skin_color}</Title>
+              <Title level={5}>Eye color: {card.eye_color}</Title>
+              <Title level={5}>Birth Year: {card.birth_year}</Title>
             </ImageCard>
           )}
         ></CardList>
