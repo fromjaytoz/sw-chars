@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
   return (
     <NavView data-testid="navbar">
       <Title style={{ color: "#ebdc1e", margin: 48 }}>
-        SWAPI Character Data w/ Infinite Scroll
+        Star Wars Character Data w/ Infinite Scroll
       </Title>
     </NavView>
   );

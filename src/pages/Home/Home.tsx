@@ -30,9 +30,7 @@ interface FetchedData {
 }
 
 const Home: React.FC = () => {
-  const [next, setNext] = useState<string | undefined>(
-    `https://swapi.dev/api/people/?page=1`
-  );
+  const [next, setNext] = useState<any>(`https://swapi.dev/api/people/?page=1`);
   const [cardData, setCardData] = useState<CardData>({
     data: [],
     loading: false,
@@ -41,15 +39,19 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     fetchData();
-  });
+  }, []);
+
+  useEffect(() => {
+    !next && setNext("https://swapi.dev/api/people/?page=1");
+  }, [next]);
 
   const fetchData = async () => {
-    if (!next) {
-      setCardData((prev) => {
-        return { ...prev, hasMore: false };
-      });
-      return;
-    }
+    // if (!next) {
+    //   setCardData((prev) => {
+    //     return { ...prev, hasMore: false };
+    //   });
+    //   return;
+    // }
     const { data } = await axios.get<FetchedData>(next);
     setNext(data?.next);
     if (cardData?.data?.length === 0) {
@@ -66,10 +68,10 @@ const Home: React.FC = () => {
     <InfiniteScroll
       dataLength={cardData?.data?.length}
       loader={
-        <>
+        <div style={{ overflow: "hidden" }}>
           <CardTitle data-testid="loading">Loading Server Data...</CardTitle>
           <Spin size="large" />
-        </>
+        </div>
       }
       next={fetchData}
       hasMore={cardData.hasMore}
@@ -86,8 +88,8 @@ const Home: React.FC = () => {
           dataSource={cardData.data}
           itemLayout="vertical"
           size="small"
-          renderItem={(card: any) => (
-            <ImageCard>
+          renderItem={(card: any, index: number) => (
+            <ImageCard key={index}>
               <CardTitle underline level={3}>
                 Name: {card.name}
               </CardTitle>
