@@ -13,6 +13,7 @@ const HeaderView = styled(Header)`
   display: flex;
   flex-direction: row;
   background: black;
+  height: auto;
 `;
 
 const ContentView = styled(Content)`

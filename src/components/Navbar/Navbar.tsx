@@ -13,8 +13,8 @@ const NavView = styled.div`
 const Navbar = () => {
   return (
     <NavView data-testid="navbar">
-      <Title style={{ color: "white", margin: 2, whiteSpace: "nowrap" }}>
-        Star Wars Characters
+      <Title style={{ color: "#ebdc1e", margin: 2 }}>
+        SWAPI Characters, Infinite Scroll
       </Title>
     </NavView>
   );

@@ -10,7 +10,7 @@ import axios from "axios";
 const { Title } = Typography;
 
 const ListView = styled.div`
-  background: grey;
+  background: black;
 `;
 
 const Image = styled.img`
@@ -20,6 +20,14 @@ const Image = styled.img`
 
 const ImageCard = styled(Card)`
   width: 100%;
+  background: black;
+  border: solid black 1px;
+`;
+
+const CardTitle = styled(Title)`
+  &.ant-typography {
+    color: #ebdc1e;
+  }
 `;
 
 const CardList = styled(List)`
@@ -30,8 +38,15 @@ const CardList = styled(List)`
   flex-direction: column;
 `;
 
+const darthJarJar = {
+  name: "Darth Jar Jar",
+  gender: "Meesa male!",
+  height: "Meesa jump high",
+};
+
 const Home = () => {
   const [next, setNext] = useState(`https://swapi.dev/api/people/?page=1`);
+  const [jarJarBinks, setJarJarBinks] = useState(darthJarJar);
   const [cardData, setCardData] = useState({
     data: [],
     loading: false,
@@ -77,13 +92,46 @@ const Home = () => {
           itemLayout="vertical"
           size="small"
           renderItem={(card: any) => (
-            <ImageCard title={`Name: ${card.name}`}>
-              <Title level={5}>Gender: {card.gender}</Title>
-              <Title level={5}>Height: {card.height} </Title>
-              <Title level={5}>Hair Color: {card.hair_color}</Title>
-              <Title level={5}>Skin Color: {card.skin_color}</Title>
-              <Title level={5}>Eye color: {card.eye_color}</Title>
-              <Title level={5}>Birth Year: {card.birth_year}</Title>
+            <ImageCard>
+              <CardTitle underline level={3}>
+                Name: {card.name}
+              </CardTitle>
+              <CardTitle level={5}>
+                <CardTitle level={4} italic>
+                  Gender:
+                </CardTitle>{" "}
+                {card.gender}
+              </CardTitle>
+              <CardTitle level={5}>
+                <CardTitle level={4} italic>
+                  Height:
+                </CardTitle>{" "}
+                {card.height}{" "}
+              </CardTitle>
+              <CardTitle level={5}>
+                <CardTitle level={4} italic>
+                  Hair Color:
+                </CardTitle>{" "}
+                {card.hair_color}
+              </CardTitle>
+              <CardTitle level={5}>
+                <CardTitle level={4} italic>
+                  Skin Color:
+                </CardTitle>{" "}
+                {card.skin_color}
+              </CardTitle>
+              <CardTitle level={5}>
+                <CardTitle level={4} italic>
+                  Eye color:
+                </CardTitle>{" "}
+                {card.eye_color}
+              </CardTitle>
+              <CardTitle level={5}>
+                <CardTitle level={4} italic>
+                  Birth Year:
+                </CardTitle>{" "}
+                {card.birth_year}
+              </CardTitle>
             </ImageCard>
           )}
         ></CardList>
