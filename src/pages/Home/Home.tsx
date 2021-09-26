@@ -41,7 +41,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  });
 
   const fetchData = async () => {
     if (!next) {
@@ -57,10 +57,9 @@ const Home: React.FC = () => {
         return { ...prev, data: data.results };
       });
     } else {
-      setCardData((prev: any) => {
+      setCardData((prev) => {
         return { ...prev, data: prev.data.concat(data.results) };
       });
-      console.log(data);
     }
   };
   return (
@@ -68,7 +67,7 @@ const Home: React.FC = () => {
       dataLength={cardData?.data?.length}
       loader={
         <>
-          <CardTitle>Loading Server Data...</CardTitle>
+          <CardTitle data-testid="loading">Loading Server Data...</CardTitle>
           <Spin size="large" />
         </>
       }
@@ -95,37 +94,37 @@ const Home: React.FC = () => {
               <CardTitle level={5}>
                 <CardTitle level={4} italic>
                   Gender:
-                </CardTitle>{" "}
+                </CardTitle>
                 {card.gender}
               </CardTitle>
               <CardTitle level={5}>
                 <CardTitle level={4} italic>
                   Height:
-                </CardTitle>{" "}
-                {card.height}{" "}
+                </CardTitle>
+                {card.height}
               </CardTitle>
               <CardTitle level={5}>
                 <CardTitle level={4} italic>
                   Hair Color:
-                </CardTitle>{" "}
+                </CardTitle>
                 {card.hair_color}
               </CardTitle>
               <CardTitle level={5}>
                 <CardTitle level={4} italic>
                   Skin Color:
-                </CardTitle>{" "}
+                </CardTitle>
                 {card.skin_color}
               </CardTitle>
               <CardTitle level={5}>
                 <CardTitle level={4} italic>
                   Eye color:
-                </CardTitle>{" "}
+                </CardTitle>
                 {card.eye_color}
               </CardTitle>
               <CardTitle level={5}>
                 <CardTitle level={4} italic>
                   Birth Year:
-                </CardTitle>{" "}
+                </CardTitle>
                 {card.birth_year}
               </CardTitle>
             </ImageCard>
