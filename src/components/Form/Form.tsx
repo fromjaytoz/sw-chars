@@ -3,7 +3,18 @@ import styled from "styled-components";
 import { Input, Checkbox, Button, Form as AForm } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
-const FormView = styled.div``;
+const FormView = styled.div`
+  width: 100vw;
+  @media (min-width: 600px) {
+    width: 50vw;
+  }
+  @media (min-width: 1000px) {
+    width: 324px;
+    height: 324px;
+  }
+  background-color: green;
+  padding: 24px;
+`;
 const { Item } = AForm;
 
 const Form = () => {
