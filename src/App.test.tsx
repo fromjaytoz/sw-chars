@@ -9,8 +9,8 @@ test("App renders navbar", async () => {
   expect(linkElement).toBeInTheDocument();
 });
 
-test("App renders form", async () => {
+test("App renders home page", async () => {
   render(<App />);
-  const linkElement = await screen.findByTestId("form");
+  const linkElement = await screen.findByTestId("home-page");
   expect(linkElement).toBeInTheDocument();
 });

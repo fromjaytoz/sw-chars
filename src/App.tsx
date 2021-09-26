@@ -2,10 +2,10 @@ import React, { FC } from "react";
 import "./App.css";
 import { Layout } from "antd";
 import styled from "styled-components";
+import Home from "./pages/Home/Home";
 
 //components
 import Navbar from "./components/Navbar/Navbar";
-import Form from "./components/Form/Form";
 
 const { Header, Footer, Content } = Layout;
 
@@ -28,7 +28,7 @@ const App: FC = () => (
         <Navbar />
       </HeaderView>
       <ContentView>
-        <Form />
+        <Home />
       </ContentView>
       <Footer>Footer</Footer>
     </Layout>
